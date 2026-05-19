@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Models and Datasets
+*.npz
+*.pth
+*.pt
+
+# Outputs
+evaluation_plot.png
+td3_bc_arm/
