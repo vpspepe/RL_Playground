@@ -115,6 +115,7 @@ if __name__ == "__main__":
     states = data["observations"]
     actions = data["actions"]
     rewards = data["rewards"]
+    next_states = data["next_observations"]
     terminals = data["terminals"]
 
     # Normalize rewards (helps training stability)
@@ -142,15 +143,10 @@ if __name__ == "__main__":
         for step in range(total_steps):
             batch_idx = indices[step * batch_size : (step + 1) * batch_size]
             
-            # Note: For simplicity, next_state is just the next index in the dataset.
-            # In our dataset generation, if it's terminal, the next state isn't meaningful, 
-            # but the 'done' flag handles it in the Bellman equation.
-            next_batch_idx = np.clip(batch_idx + 1, 0, len(states) - 1)
-            
             batch_states = states[batch_idx]
             batch_actions = actions[batch_idx]
             batch_rewards = rewards[batch_idx]
-            batch_next_states = states[next_batch_idx]
+            batch_next_states = next_states[batch_idx]
             batch_terminals = terminals[batch_idx]
             
             c_loss, a_loss = agent.train_step(

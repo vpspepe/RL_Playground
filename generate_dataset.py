@@ -9,6 +9,7 @@ def generate_dataset(num_episodes=5000, max_steps_per_episode=50, save_path="off
     observations = []
     actions = []
     rewards = []
+    next_observations = []
     terminals = []
     
     print("Generating offline dataset...")
@@ -55,6 +56,7 @@ def generate_dataset(num_episodes=5000, max_steps_per_episode=50, save_path="off
             
             actions.append(action.copy())
             rewards.append(reward)
+            next_observations.append(next_obs.copy())
             terminals.append(1 if terminated else 0)
             
             obs = next_obs
@@ -68,6 +70,7 @@ def generate_dataset(num_episodes=5000, max_steps_per_episode=50, save_path="off
     observations = np.array(observations)
     actions = np.array(actions)
     rewards = np.array(rewards)
+    next_observations = np.array(next_observations)
     terminals = np.array(terminals)
     
     print(f"Dataset generated! Total transitions: {len(observations)}")
@@ -76,6 +79,7 @@ def generate_dataset(num_episodes=5000, max_steps_per_episode=50, save_path="off
              observations=observations, 
              actions=actions, 
              rewards=rewards, 
+             next_observations=next_observations,
              terminals=terminals)
     
     print(f"Saved to {save_path}")
