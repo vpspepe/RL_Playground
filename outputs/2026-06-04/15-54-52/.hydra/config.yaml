@@ -1,0 +1,18 @@
+model:
+  actor_hidden_dims:
+  - 512
+  - 512
+  critic_hidden_dims:
+  - 512
+  - 512
+hyperparameters:
+  lr: 0.0003
+  discount: 0.99
+  tau: 0.005
+  alpha: 2.5
+  boundary_penalty_coeff: 0.1
+training:
+  epochs: 10
+  batch_size: 256
+  dataset_path: offline_dataset.npz
+  save_model_path: custom_offline_actor.pth

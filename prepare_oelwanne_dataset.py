@@ -7,7 +7,7 @@ from collections import defaultdict
 # PATH SETUP (Relative to Script Location)
 # ==========================================
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../MarcoProject/oelwanne/normalized_data"))
+DATA_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../oelwanne/normalized_data"))
 SAVE_PATH = os.path.join(SCRIPT_DIR, "offline_dataset.npz")
 
 # Number of random destination simulations to pair with each source simulation
